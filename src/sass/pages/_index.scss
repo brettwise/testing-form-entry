@@ -22,6 +22,20 @@ button {
 	@include font-stack;
 	font-size: 1.4rem;
 }
+input[type="email"] {
+	background-color: $page-color;
+	border-color: #cf2a0e;
+	color: white;
+	&:focus {
+		background-color: $page-color;
+		border-color: #cf2a0e;
+		@include font-stack;
+	}
+}
+#email-input::-webkit-input-placeholder {
+	color: white;
+	@include font-stack;
+}
 #particles-js {
 	background: $page-color;
 	height:100%;

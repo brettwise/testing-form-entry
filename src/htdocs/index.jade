@@ -9,7 +9,7 @@ block content
                     h1.text-center#top-headline Enter your email below!
                     form#signup-form.signup-form.row.collapse.text-center(role='form', onsubmit='return signup(this)')
                         .small-8.columns    
-                            input.form-control.columns(name='email', type='email', placeholder='your email', required='')
+                            input.form-control.columns#email-input(name='email', type='email', placeholder='your email', required='')
                         .small-4.columns     
                             button#signup-button.postfix.alert.small-4.columns(type='submit') Sign Me Up 
                     h1#update-me.text-center

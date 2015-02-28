@@ -26,6 +26,8 @@ input[type="email"] {
 	background-color: $page-color;
 	border-color: #cf2a0e;
 	color: white;
+	height: 3rem;
+	font-size: 1rem;
 	&:focus {
 		background-color: $page-color;
 		border-color: #cf2a0e;
@@ -50,6 +52,10 @@ input[type="email"] {
 	margin-left: auto;
 	margin-right: auto;
 	padding-top: 9rem;
+}
+#signup-button {
+	height: 3rem;
+	font-size: 1.1rem;
 }
 #update-me {
 	margin-top: 3rem;

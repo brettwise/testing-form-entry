@@ -3,10 +3,34 @@ $page-color: #f04124;
 @mixin font-stack() {
 	font-family: "larabiefont", monospace;
 }
-
-body {
+html, body { 
 	color: white;
-
+	margin: 0;
+}
+canvas {
+	display:block;
+	vertical-align:bottom;
+	height: 100%;
+	width: 100%;
+}
+h1, h3 {
+	color: white;
+	@include font-stack;
+	text-transform: uppercase;
+}
+button {
+	@include font-stack;
+	font-size: 1.4rem;
+}
+#particles-js {
+	background: $page-color;
+	height:100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
 }
 .signup {
 	margin-left: auto;
@@ -15,42 +39,13 @@ body {
 }
 #update-me {
 	margin-top: 3rem;
-	text-transform: uppercase;
 }
 #top-headline {
 	margin-bottom: 4rem;
-	text-transform: uppercase;
-}
-h1, h3 {
-	color: white;
-	@include font-stack;
-}
-button {
-	@include font-stack;
-	font-size: 1.4rem;
-}
-html,body{ 
-  margin:0;
 }
 .get-on-top>* {
 	position: relative;
 	z-index: 5;
-}
-canvas{
-	display:block;
-	vertical-align:bottom;
-	height: 100%;
-	width: 100%;
-}
-#particles-js{
-  background: $page-color;
-  height:100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
 }
 #got-it {
 	display: none;

@@ -1,7 +1,113 @@
 extends layouts/h5bp.jade
 
-block title
-	title This Cray
-
 block content
-	p can you believe this content!
+    .get-on-top
+        #particles-js
+        .signup
+            .row
+                .medium-10.medium-offset-1.large-8.large-offset-2.columns
+                    h1.text-center#top-headline Enter your email below!
+                    form#signup-form.signup-form.row.collapse.text-center(role='form', onsubmit='return signup(this)')
+                        .small-8.columns    
+                            input.form-control.columns(name='email', type='email', placeholder='your email', required='')
+                        .small-4.columns     
+                            button#signup-button.postfix.alert.small-4.columns(type='submit') Sign Me Up 
+                    h3#got-it 
+                    h1#update-me.text-center
+
+    script.
+        var signupForm = document.getElementById('signup-form');
+        var signupBtn = document.getElementById('signup-button');
+        var emailCount = new Firebase("https://testing-form-entry.firebaseio.com/emails/count");
+        emailCount.child("/").on("value", function(snapshot) {
+            var update = document.getElementById('update-me');
+            var count = (snapshot.val());
+            update.innerHTML = "Signups so far: " + count;
+        });
+        var onSignupComplete = function(error) {
+        signupBtn.disabled = false;
+        if (error) {
+          signupError.innerHTML = 'Sorry. Could not signup.';
+          } else {
+          incrementCounter();
+          $('#signup-form').fadeOut(400, function() {
+              $(this).html("<h3>+1, got it! We'll be in touch.</h3>").fadeIn(500)
+            })  
+          }
+        }
+        function signup(formObj) {
+          var emailStore = new Firebase("https://testing-form-entry.firebaseio.com/emails");
+          emailStore.push({
+          email: formObj.email.value,
+          }, onSignupComplete)
+          return false;
+        }
+        function incrementCounter() {
+            var emailCount = new Firebase("https://testing-form-entry.firebaseio.com/emails/count");
+            emailCount.transaction(function (current_value) {
+                return current_value+1;
+                });
+        }
+        particlesJS('particles-js', {
+          particles: {
+            color: '#fff',
+            color_random: false,
+            shape: 'circle', // "circle", "edge" or "triangle"
+            opacity: {
+              opacity: 1,
+              anim: {
+                enable: false,
+                speed: 1.5,
+                opacity_min: 1,
+                sync: false
+              }
+            },
+            size: 2.5,
+            size_random: true,
+            nb: 100,
+            line_linked: {
+              enable_auto: true,
+              distance: 140,
+              color: '#fff',
+              opacity: 1,
+              width: 1,
+              condensed_mode: {
+                enable: false,
+                rotateX: 600,
+                rotateY: 600
+              }
+            },
+            anim: {
+              enable: true,
+              speed: 1
+            }
+          },
+          interactivity: {
+            enable: true,
+            mouse: {
+              distance: 250
+            },
+            detect_on: 'canvas', // "canvas" or "window"
+            mode: 'grab', // "grab" of false
+            line_linked: {
+              opacity: .5
+            },
+            events: {
+              onclick: {
+                enable: true,
+                mode: 'push', // "push" or "remove"
+                nb: 4
+              },
+              onresize: {
+                enable: true,
+                mode: 'out', // "out" or "bounce"
+                density_auto: false,
+                density_area: 800 // nb_particles = particles.nb * (canvas width *  canvas height / 1000) / density_area
+              }
+            }
+          },
+          /* Retina Display Support */
+          retina_detect: true
+        });
+
+                //- this is from => http://www.fizerkhan.com/blog/posts/Startup-Landing-Pages-with-Firebase.html 

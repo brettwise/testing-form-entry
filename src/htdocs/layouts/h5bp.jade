@@ -11,22 +11,17 @@ html.no-js(lang='en')
     // Place favicon.ico in the root directory
     link(rel='stylesheet', href='css/main.css')
     script(src='js/modernizr.js')
+    script(src='js/particles.js')
+    script(src='https://cdn.firebase.com/js/client/2.0.4/firebase.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+    script(src='//use.typekit.net/uiz0lxc.js')
+    script.
+      try{Typekit.load();}catch(e){}
     block scripts
   body
-    //if lt IE 8
-      p.browserupgrade
-        | You are using an 
-        strong outdated
-        |  browser. Please 
-        a(href='http://browsehappy.com/') upgrade your browser
-        |  to improve your experience.
-    // Add your site or application content here
-    block content 
-    script(src='//ajax.googleapis.com/ajax/libs/jquery/{{JQUERY_VERSION}}/jquery.min.js')
-    script.
-      window.jQuery || document.write('<script src="js/jquery-{{JQUERY_VERSION}}.min.js"><\\/script>')
+    block content     
+    
     script(src='js/main.js')
-    // Google Analytics: change UA-XXXXX-X to be your site's ID.
     script.
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;

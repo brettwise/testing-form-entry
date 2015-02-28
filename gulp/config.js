@@ -66,6 +66,12 @@ module.exports = {
       outputName: 'main.js',
       // list of externally available modules to exclude from the bundle
       external: ['jquery', 'underscore']
+    }, { 
+      entries: src + '/js/vendor/particles.js/particles.js',
+      dest: dest + '/js',
+      outputName: 'particles.js',
+      // list of externally available modules to exclude from the bundle
+      external: ['jquery', 'underscore']
     }, {
       entries: src + '/js/vendor/modernizr/modernizr.js',
       dest: dest + '/js',

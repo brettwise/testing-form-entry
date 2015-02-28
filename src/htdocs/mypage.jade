@@ -1,0 +1,29 @@
+extends layouts/h5bp.jade
+
+block content
+    .signup
+        h2.signup-title Sign Up for beta
+        form#email(role='form',onsubmit='return signup(this)')
+            input(name='email', type='text', placeholder='Email', required='')
+            button(type='submit') Give Us Ur Emails!
+        p#signup-success.text-success
+        script.
+            var firebaseRef = new Firebase('https://testing-form-entry.firebaseio.com/');
+            function funct1(formObj) {
+                //- var email = $('#email').text();
+                console.log(formObj.email.value);
+                firebaseRef.push({email: formObj.email.value});
+            }
+            //- $('#email').submit(function () {
+                //- sendContactForm();
+                //- return false;
+            //- });
+            //- var submit = document.getElementsByTagName('button')[0];
+            //- submit.onclick = funct1; 
+
+//- Why this wasn't working.
+//- 1. I was missing onsubmit on form. 
+    //- But I thought I didn't need it because I had this event listener. 
+    //- I want to know if it's possible to do this without the form's onsubmit
+//- 2. Looks like I was missing the name property on the input element.
+    //- I need to know if this is strictly necessary.
